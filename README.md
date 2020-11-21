@@ -96,7 +96,7 @@ Logout and login for reflecting changes (using `groups` command) of being added 
 
 Use `nmtui` or `nmcli` as usual to connect wirelessly, or via eth or usb.
 
-## Brightness
+### Brightness
 
 I had used `brightnessctl` in previous Linux (ubuntu) and it worked well enough (`xbacklight` didn't work in ubuntu), so I installed it.
 
@@ -252,6 +252,11 @@ Some good themes (gtk2/3) (with ongoing development) (in order of liking) -
 - [Materia](https://github.com/nana-4/materia-theme) -- not installed.
 - ~~[wpgtk](https://github.com/deviantfero/wpgtk) -- I need to look into it.~~
 
+**These do not have source code (sass files) - **
+- [Obsidian 2](https://www.gnome-look.org/p/1173113/)
+- [Jade 1](https://www.gnome-look.org/p/1167214)
+- [Prof Gnome theme](https://www.gnome-look.org/p/1334194/)
+
 Notes:
 
 1. Use `lxappearance` (installable without any lxde desktop dependencies from void repos) to change themes. This creates and overrides the files `~/gtkrc-2.0` and `~/.config/gtk-3.0/settings.ini`.
@@ -261,6 +266,30 @@ Notes:
 3. Qt themes are different and don't go well with the gtk themes, even icons.
 
 4. Use `~/.local/share/themes/` to extract themes into.
+
+### Colorschemes for vim and alacritty
+
+Some good colorschemes for vim (but can be extended to terminal and other programs) and having both light/dark variants (mostly)
+
+- [forest-night](https://github.com/sainnhe/forest-night), for alacritty [this](https://gist.github.com/sainnhe/6432f83181c4520ea87b5211fed27950)
+- [gruvbox-material](https://github.com/sainnhe/gruvbox-material), for alacritty [this](https://gist.github.com/sainnhe/ad5cbc4f05c4ced83f80e54d9a75d22f)
+- [gruvbox](https://github.com/morhetz/gruvbox)
+- [iceberg](https://github.com/cocopon/iceberg.vim)
+- [base16-ocean](https://github.com/chriskempson/base16-vim/blob/master/colors/base16-ocean.vim), for alacritty [this](https://github.com/aaron-williamson/base16-alacritty/tree/master/colors)
+- [oceanic-next](https://github.com/voronianski/oceanic-next-color-scheme) --> The official light theme still has some issues and is not usable at the moment, need to check again.
+- [two-firewatch](https://github.com/rakr/vim-two-firewatch)
+- [Base2Tone-vim](https://github.com/atelierbram/Base2Tone-vim) based on [DuoTone for Atom](https://simurai.com/projects/2016/01/01/duotone-themes)
+- [one-half](https://github.com/sonph/onehalf)
+- [vim-one](https://github.com/rakr/vim-one)
+- [solarized8](https://github.com/lifepillar/vim-solarized8)
+- [papercolor](https://github.com/NLKNguyen/papercolor-theme)
+- [ayu](https://github.com/ayu-theme/ayu-vim)
+
+*I got tired of searching for good schemes and so I decided to make some, see [here](mycolorschemes.yml)*
+*But tbh, selecting good, eye-pleasing colors is a pain, and I don't even know how hard creating a vimscript is for the same.*
+
+> For more good color schemes (vim) look at 'trending' and 'top' sections of [vimcolorschemes.com](vimcolorschemes.com/)
+> Nord and dracula are intentionally left out.
 
 ### File Manager GUI
 
@@ -296,3 +325,6 @@ What is `dc`, was it already installed? Was `gnu-bc` already installed? (I guess
 
 - [ Search void packages on web page](https://voidlinux.org/packages/) 
 
+- `masterpdfeditor5` is available as an executable script from their [website](code-industry.net/). So downloaded that and running. But it needs `qt5` to be installed, along with `qt5-svg`(install from void repos). It is also available as a restricted package from void repos (which needs to be built using `xbps-src`. I haven't tried that). Also it is available as a deb package from their site and you can use `xdeb` to extract from deb into xbps format for installing in void (but haven't tried that either). 
+
+- Installed `featherpad` for a gui text editor.

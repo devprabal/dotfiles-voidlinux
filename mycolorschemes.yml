@@ -1,0 +1,50 @@
+## colorschemes made by devpogi
+## format usable for alacritty
+
+## Inspired by [u/fehawen](https://www.reddit.com/r/unixporn/comments/jjyn2o/sowm_gridline/?utm_medium=android_app&utm_source=share)
+ming: &ming
+    primary:
+      background: '#003133'
+      foreground: '#96DADD'
+    normal:
+      black:   '#003133'
+      red:     '#F57773'
+      green:   '#5BC161'
+      yellow:  '#D4B26A'
+      blue:    '#469194'
+      magenta: '#4F618F'
+      cyan:    '#F5AF73'
+      white:   '#96DADD'
+    bright:
+      black:   '#003133'
+      red:     '#FFA5A3'
+      green:   '#8BD990'
+      yellow:  '#FFD3AD'
+      blue:    '#77B6B9'
+      magenta: '#7887AB'
+      cyan:    '#FFCDA3'
+      white:   '#96DADD'
+
+## Inspired by [discord](discord.com/branding)
+wumpus: &wumpus
+    primary:
+      background: '#23272A'
+      foreground: '#F4F1DE'
+    normal:
+      black:   '#2C2F33'
+      red:     '#D97187'
+      green:   '#71D98E'
+      yellow:  '#D9C271'
+      blue:    '#7289DA'
+      magenta: '#8E71D9'
+      cyan:    '#71D9C2'
+      white:   '#99AAB5'
+    bright:
+      black:   '#23272A'
+      red:     '#D97187'
+      green:   '#71D98E'
+      yellow:  '#D9C271'
+      blue:    '#7289DA'
+      magenta: '#8E71D9'
+      cyan:    '#71D9C2'
+      white:   '#F4F1DE'
