@@ -1,3 +1,8 @@
+*Although I am using Void Linux, this guide should also help (as is, or, in a minimum-modified form) other Linux-based OS users to understand or perform common tweaks/tasks.*
+
+---
+
+
 ## Getting the iso (Void Linux)
 
 The default mirror is too slow for me, so I used the "New York" Tier 1 mirror listed in their official documentation.
@@ -307,7 +312,7 @@ Also installed `pcmanfm-qt` from void repos (though I will uninstall it).
 
 ### Miscellaneous
 
-- Use `pkill` instead of `killall` (uninstalled).
+- Use `pkill` instead of `killall` (not present by default in void).
 
 - I installed `bc` from their repos because it wasn't there already, however, I got the following messages during install, - 
 
