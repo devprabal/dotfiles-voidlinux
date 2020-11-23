@@ -7,10 +7,10 @@ do
 	if [[ ${dotdir} =~ .*'/'.* ]]; then
 		mkdir -p ../${dotdir}
 		echo "Copying ${file} to ../${dotdir}/"
-		eval cp ${file} ../${dotdir}/
+		eval cp --no-dereference ${file} ../${dotdir}/
 	else
 		echo "Copying ${file} to dotfiles" 
-		eval cp ${file} ..
+		eval cp --no-dereference ${file} ..
 	fi
 done
 
