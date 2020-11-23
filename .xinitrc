@@ -32,24 +32,5 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-#xsetroot -cursor_name left_ptr
-#
-### another method for setting wallpaper, however, picom interferes and polybar doesn't appear on top of it
-## xsetroot -bg "#323d43" -fg "#465258" -mod 16 16
-#~/.fehbg &
-#
-#pgrep -x polybar > /dev/null || polybar heusc > /dev/null 2>&1 &
-#
-## redshift -P -O 4538 
-#
-#pgrep -x picom > /dev/null || picom --experimental-backends --config /home/devpogi/.config/picom/picom.conf &
-#
-##pgrep -x dunst > /dev/null || dunst &
-##sleep 1;
-##notify-send "Welcome" "$USER" -u low
-#
-### will be handled by cron job later
-##notify-send "don't forget to run battery_health.sh" -u normal
-
 exec /usr/bin/bspwm
 #exec /usr/bin/jwm
