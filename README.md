@@ -129,6 +129,14 @@ I have checked that multiple applications can output the sound simultaneously, s
 
 Also, I didn't set up any configuration. The sound was ready to output as soon as the package was installed. The only thing to do was to unmute **Master** channel by `alsamixer` (which can be also done using cli-only command `amixer`, see arch wiki for details).
 
+Then I set up keybindings for controlling (increasing, decreasing and un/mute) volume using `amixer`. [arch wiki](https://wiki.archlinux.org/index.php/Advanced_Linux_Sound_Architecture#Keyboard_volume_control) and [stackexchange](https://unix.stackexchange.com/questions/21089/how-to-use-command-line-to-change-volume) can help.
+
+To get the volume, (to use in notification scripts, etc.), use this command, shamelessly stolen from [stackoverflow](https://unix.stackexchange.com/questions/89571/how-to-get-volume-level-from-the-command-line)
+
+```bash
+awk -F"[][]" '/dB/ { print $2 }' <(amixer sget Master)
+```
+
 ### Fonts
 
 Most of the websites use Helvetica as default font (still, apparently from MacOs). Something like ` helvR12.pcf.gz` (or `helv*.pcf.gz`) turns up on command `fc-match 'Helvetica'`. I think it is installed by default in void, however, it is not that great font. So, we can set up a rule in `~/.config/fontconfig/fonts.conf` to replace this font with another font like - 
@@ -252,7 +260,7 @@ Some good themes (gtk2/3) (with ongoing development) (in order of liking) -
 - [Materia](https://github.com/nana-4/materia-theme) -- not installed.
 - ~~[wpgtk](https://github.com/deviantfero/wpgtk) -- I need to look into it.~~
 
-**These do not have source code (sass files) - **
+**These do not have source code (sass files)** - 
 - [Obsidian 2](https://www.gnome-look.org/p/1173113/)
 - [Jade 1](https://www.gnome-look.org/p/1167214)
 - [Prof Gnome theme](https://www.gnome-look.org/p/1334194/)
@@ -325,6 +333,32 @@ What is `dc`, was it already installed? Was `gnu-bc` already installed? (I guess
 
 - [ Search void packages on web page](https://voidlinux.org/packages/) 
 
-- `masterpdfeditor5` is available as an executable script from their [website](code-industry.net/). So downloaded that and running. But it needs `qt5` to be installed, along with `qt5-svg`(install from void repos). It is also available as a restricted package from void repos (which needs to be built using `xbps-src`. I haven't tried that). Also it is available as a deb package from their site and you can use `xdeb` to extract from deb into xbps format for installing in void (but haven't tried that either). 
+- `masterpdfeditor5` is available as an executable script from their [website](code-industry.net/). So downloaded that and running. But it needs `qt5` to be installed (which installs other `qt` dependencies), along with `qt5-svg`(install from void repos). It is also available as a restricted package from void repos (which needs to be built using `xbps-src`. I haven't tried that). Also it is available as a deb package from their site and you can use `xdeb` to extract from deb into xbps format for installing in void (but haven't tried that either). 
 
 - Installed `featherpad` for a gui text editor.
+
+- Installed `vscode` from void repos. This also installs `xdg-utils`, ~~so I guess the problems of `XDG_RUNTIME_DIR` being not set~~ (DID NOT SOLVE) and `xdg-open` (not found) will get solved. Also, note that this is `code-oss` (program name). Since I had already synced my setup on [settings sync extension](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync), I just needed to install this extension and sign-in with my github and download my settings.
+
+- Colors in `man` - put the below in `~/.bashrc`.
+
+```bash
+man() {
+    LESS_TERMCAP_md=$'\e[01;31m' \
+    LESS_TERMCAP_me=$'\e[0m' \
+    LESS_TERMCAP_se=$'\e[0m' \
+    LESS_TERMCAP_so=$'\e[01;44;37m' \
+    LESS_TERMCAP_ue=$'\e[0m' \
+    LESS_TERMCAP_us=$'\e[01;32m' \
+    command man "$@"
+}
+```
+
+Other programs like `ip`, `ls`, `grep`, `diff` already have a switch `--color=auto`. Use these as aliases in `~/.bash_aliases` (and then source this file in `~/.bashrc`) - 
+
+```bash
+alias ls='ls --color=auto'
+```
+
+[source arch wiki](https://wiki.archlinux.org/index.php/Color_output_in_console)
+
+-  
