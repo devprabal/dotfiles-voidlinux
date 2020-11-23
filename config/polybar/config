@@ -1,0 +1,268 @@
+; ==================== how to configure ==================== 
+; See [polybar wiki](https://github.com/polybar/polybar/wiki/Configuration) and polybar man page (optional) to customize.
+; use polybar <barname> --log=(error|warning|info|trace) to debug
+
+; ==================== include colors file ==================== 
+; colors.ini is a symlink to actual yourcolors.ini file in the same dir and that file should contain [colorsdark] section (having hex values for fg,bg,black,red,green,yellow,blue,magenta,cyan,white).
+; This makes easy to switch the colors by pointing the link to another such file.
+
+include-file = $HOME/.config/polybar/colors.ini
+
+; ==================== main bar ==================== 
+; heusc is in reference to the anime Fugou Keiji HEUSC (ai butler)
+
+[bar/heusc]
+
+bottom = false
+width = 100%
+height = 40
+background = '#282c34'
+foreground = '#dcdfe4'
+radius = 0.0
+dim-value = 1.0
+fixed-center = true
+enable-ipc = true
+border-left-size = 12
+border-right-size = 12
+border-top-size = 8
+border-bottom-size = 4
+border-color = 
+border-size = 
+module-margin-left = 2
+module-margin-right = 0
+tray-position = none
+cursor-click = pointer
+cursor-scroll = 
+wm-restack = bspwm
+override-redirect = false
+
+font-0 = "Hack Nerd Font:size=15:weight=bold;2"
+font-1 = "Roboto:size=15:weight=bold;2"
+font-2 = "Hack Nerd Font:size=24:weight=bold;5"
+font-3 = "Hack Nerd Font:size=18:weight=bold;3"
+
+modules-left = bspwm
+modules-center = xwindow
+modules-right = date battery powermenu
+;modules-right = wlan alsa backlight-acpi battery date powermenu
+
+[module/bspwm]
+type = internal/bspwm
+
+pin-workspaces = true
+enable-click = true
+enable-scroll = false
+reverse-scroll = false
+format-padding = 0
+ 
+ws-icon-0 = "1;"
+ws-icon-1 = "2;"
+ws-icon-2 = "3;"
+ws-icon-3 = "4;龎"
+ws-icon-4 = "5;5"
+ws-icon-5 = "6;6"
+ws-icon-6 = "7;7"
+ws-icon-7 = "8;切"
+ws-icon-8 = "9;ﭮ"
+ws-icon-default = ""
+ 
+format = <label-state>
+label-focused = %{T4}%icon% %{T-}
+label-occupied = %{T4}%icon% %{T-}
+label-empty = %{T4}%index% %{T-}
+label-urgent = %{T4}%icon% %{T-}
+
+label-focused-padding = 2
+label-occupied-padding = 2
+label-empty-padding = 2
+label-urgent-padding = 2
+
+label-focused-foreground = ${colorsdark.bg}
+label-occupied-foreground = ${colorsdark.fg}
+label-empty-foreground = ${colorsdark.bg}
+label-urgent-foreground = ${colorsdark.bg}
+
+label-focused-background = ${colorsdark.blue}
+label-occupied-background = ${colorsdark.bg}
+label-empty-background = ${colorsdark.fg}
+label-urgent-background = ${colorsdark.fg}
+
+[module/xwindow]
+type = internal/xwindow
+label = %title%
+label-maxlen = 50
+format-foreground = ${colorsdark.fg}
+format-background = ${colorsdark.bg}
+format-padding = 1
+
+[module/wlan]
+type = internal/network
+
+interface = wlo1
+interval = 3.0
+
+format-connected = <label-connected>
+format-connected-background = ${colorsdark.bg}
+
+label-connected = 直 %{T2}%essid%%{T-}
+
+format-disconnected = <label-disconnected>
+format-disconnected-background = ${colorsdark.bg}
+
+label-disconnected = 睊 %{T2}%ifname%%{T-}
+
+[module/eth]
+type = internal/network
+
+interface = eno1
+interval = 3.0
+
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${colorsdark.fg}
+label-connected = %local_ip%
+
+format-disconnected = <label-disconnected>
+format-disconnected-prefix = " "
+label-disconnected = %ifname%
+
+[module/date]
+type = internal/date
+
+interval = 5
+date = "%a, %d %b"
+time = "%H:%M"
+
+format-foreground = ${colorsdark.fg}
+format-background = ${colorsdark.bg}
+format = <label>
+label = "  %{T2}%date%%{T-}  %{T2}%time%  %{T-}"
+
+[module/battery]
+type = internal/battery
+
+;TODO: the module behaves strangely (not following colors) when the capacity is 100 and the status is Unknown (while it is still plugged in) (in /sys/class/power_supply/BAT1/status)
+
+battery = BAT1
+adapter = ACAD
+full-at = 100
+
+format-charging = <animation-charging> <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+
+format-charging-background = ${colorsdark.bg}
+format-discharging-background = ${colorsdark.bg}
+
+label-charging = "%{T2}%percentage%%  %{T-}"
+label-charging-foreground = ${colorsdark.fg}
+label-discharging = "%{T2}%percentage%%  %{T-}"
+label-discharging-foreground = ${colorsdark.fg}
+label-full = "%{T2}%percentage%%  and%{T-}"
+
+animation-charging-0 = %{T4}%{F#e5c07b} ⚡%{T-}%{F-}
+animation-charging-1 = %{T4}%{F#98c379} ⚡%{T-}%{F-}
+animation-charging-framerate = 850
+
+ramp-capacity-0 = %{T4}%{F#e06c75} %{T-}%{F-}
+ramp-capacity-1 = %{T4}%{F#e06c75} %{T-}%{F-}
+ramp-capacity-2 = %{T4}%{F#e06c75} %{T-}%{F-}
+ramp-capacity-3 = %{T4}%{F#c678dd} %{T-}%{F-}
+ramp-capacity-4 = %{T4} %{T-}
+ramp-capacity-5 = %{T4} %{T-}
+ramp-capacity-6 = %{T4} %{T-}
+ramp-capacity-7 = %{T4} %{T-}
+ramp-capacity-8 = %{T4} %{T-}
+ramp-capacity-9 = %{T4} %{T-}
+ramp-capacity-foreground = ${colorsdark.fg}
+
+[module/powermenu]
+type = custom/text
+
+content-foreground = ${colorsdark.bg}
+content-background = ${colorsdark.red}
+content = %{T3} 襤 %{T-} 
+click-left = ~/raisu/scripts/powermenu.sh
+
+[settings]
+screenchange-reload = true
+
+[global/wm]
+margin-top = 6
+margin-bottom = 5
+
+; ==================== music bar ==================== 
+; ongaku means music in japanese
+
+[bar/ongaku]
+
+width = 100%
+height = 40
+bottom = true
+radius = 0.0
+fixed-center = true
+
+enable-ipc = true
+
+background = ${colorsdark.bg}
+foreground = ${colorsdark.fg}
+
+border-top-size = 4
+border-bottom-size = 4
+border-left-size = 4
+border-right-size = 4
+
+border-color = 
+
+module-margin-left = 0
+module-margin-right = 0
+
+font-0 = "Hack Nerd Font:size=15:weight=bold;2"
+font-1 = "Roboto:size=15:weight=bold;2"
+font-2 = "Hack Nerd Font:size=25:weight=bold;5"
+font-3 = "Hack Nerd Font:size=18:weight=bold;2"
+
+modules-left =
+modules-center = round-left mpd round-right
+modules-right = 
+tray-position = none
+tray-padding = 
+
+override-redirect = false
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/mpd]
+type = internal/mpd
+
+interval = 2
+format-online = <icon-prev> <icon-stop> <toggle> <icon-next> <label-song> <label-time>
+
+format-online-background = ${colorsdark.bg}
+
+format-offline = <label-offline>
+format-offline-background = ${colorsdark.bg}
+
+icon-prev = %{T4}玲%{T-}
+icon-stop = %{T4}栗%{T-}
+icon-play = %{T4}契%{T-}
+icon-pause = %{T4}%{T-}
+icon-next = %{T4}怜%{T-}
+
+label-song-maxlen = 50
+label-song-ellipsis = false
+label-offline =  %{T2}mpd is offline%{T-}
+label-offline-foreground = ${colorsdark.red}
+label-song = " %{T2} %title% - %artist%%{T-}"
+label-song-foreground = ${colorsdark.yellow}
+label-time = "%{T2} %elapsed% / %total% %{T-}"
+label-time-foreground = ${colorsdark.magenta}
+
+bar-progress-width = 15
+bar-progress-indicator = " "
+bar-progress-indicator-font = 4
+bar-progress-indicator-foreground = ${colorsdark.blue}
+bar-progress-fill = ─
+bar-progress-fill-foreground = ${colorsdark.blue}
+bar-progress-fill-font = 4
+bar-progress-empty = ─
+bar-progress-empty-font = 2

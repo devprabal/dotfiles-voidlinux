@@ -1,0 +1,137 @@
+# ==================== sxhkd ==================== 
+
+# make sxhkd reload its configuration files:
+super + alt + Escape
+	pkill -USR1 -x sxhkd
+
+# ==================== programs ==================== 
+
+# terminal emulator
+super + {Return, KP_Enter}
+	alacritty
+
+ctrl + alt + t
+	alacritty
+
+# file manager
+ctrl + alt + f
+	pcmanfm
+
+# program launcher
+super + d
+	rofi -modi "drun" -show "drun" -display-drun " " -theme "~/.config/rofi/themes/application_launcher.rasi"
+
+# screenshot
+Print
+	maim ~/Pictures/Screenshots/maimshot_$(date +%Y-%m-%d-%H_%M_%S).png; \
+	notify-send "MaimShot" "Saved in ~/Pictures/Screenshots/" -u normal
+
+shift + Print
+	maim -s ~/Pictures/Screenshots/maimshot_$(date +%Y-%m-%d-%H_%M_%S).png; \
+	notify-send "MaimShot" "Saved in ~/Pictures/Screenshots/" -u normal
+	
+# brightness controls
+## you will need to press Esc to break the chain after you are done
+Alt_R: @KP_Down
+	brightnessctl set 5%-;\
+	~/raisu/scripts/notify_brightness.sh
+
+Alt_R: @KP_Up
+	brightnessctl set +5%;\
+	~/raisu/scripts/notify_brightness.sh
+
+# volume controls
+XF86AudioMute
+	amixer set Master toggle; \
+	~/raisu/scripts/notify_volume.sh
+
+XF86AudioRaiseVolume
+	amixer set Master unmute && amixer set Master 5%+; \
+	~/raisu/scripts/notify_volume.sh
+
+XF86AudioLowerVolume
+	amixer set Master unmute && amixer set Master 5%-; \
+	~/raisu/scripts/notify_volume.sh
+
+# music player controls (with mpd and mpc)
+XF86AudioNext
+	pgrep -x mpd && mpc next && music_notify.sh next
+
+XF86AudioPrev
+	pgrep -x mpd && mpc prev && music_notify.sh prev
+
+XF86AudioPlay
+	pgrep -x mpd && mpc toggle && music_notify.sh toggle
+
+# ==================== bspwm ==================== 
+
+# restart bspwm
+super + alt + r
+	bspc wm -r
+
+# close and kill node
+super + {_,shift + }q
+	bspc node -{c,k}
+
+# set the window state
+super + {t,shift + t,s,f}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# focus the node in the given direction
+super + {h, Left}
+	bspc node -f west
+
+super + {j, Down}
+	bspc node -f south
+
+super + {k, Up}
+	bspc node -f north
+
+super + {l, Right}
+	bspc node -f east
+
+# swap the node in the given direction and follow it
+super + shift + {h, Left}
+	bspc node -s west --follow
+
+super + shift + {j, Down}
+	bspc node -s south --follow
+
+super + shift + {k, Up}
+	bspc node -s north --follow
+
+super + shift + {l, Right}
+	bspc node -s east --follow
+
+# cycle nodes on current desktop
+alt + {_,shift + }Tab
+	bspc node -f {next,prev}.local.!hidden.window
+
+# cycle desktops on current monitor
+alt + {_,shift + }grave
+	bspc desktop -f {next, prev}.local
+
+# focus the last node/desktop
+super + {Tab,grave}
+	bspc {node,desktop} -f last
+
+# focus a desktop
+super + {1-9,0}
+	bspc desktop -f '^{1-9,10}'
+
+# send to the given desktop and focus it
+super + shift + {1-9,0}
+	bspc node -d '^{1-9,0}' --follow 
+
+# expand a window by moving one of its side outward
+ctrl + super + {h,j,k,l}
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# contract a window by moving one of its side inward
+ctrl + super + shift + {h,j,k,l}
+	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+# move a floating window
+super + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
+
