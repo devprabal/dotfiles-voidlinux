@@ -1,6 +1,6 @@
 #! /bin/sh
 
-pgrep -x sxhkd > /dev/null || sxhkd &
+# ==================== bspwm ==================== 
 
 bspc monitor eDP1 -d 1 2 3 4 5 6 7 8 9
 
@@ -14,8 +14,7 @@ bspc config focused_border_color '#282c34'
 bspc config -d ^2 window_gap 0
 
 bspc rule -a Firefox:Navigator desktop='^2' \
-state=tiled follow=off focus=off \
-border=off
+state=tiled follow=off focus=off border=off
 bspc rule -a desktop='^2' split_ratio=0.80 
 bspc rule -a Firefox:firefox state=floating
 bspc rule -a Firefox:Firefox state=floating
@@ -26,22 +25,28 @@ bspc rule -a "Code - OSS" desktop='^3' state=tiled
 bspc rule -a "Master PDF Editor 5" desktop='^4' state=tiled
 bspc rule -a feh state=floating
 
+# ==================== cursor and wallpaper  ==================== 
+
 xsetroot -cursor_name left_ptr
 
-## another method for setting wallpaper, however, picom interferes and polybar doesn't appear on top of it
+#another method for setting wallpaper, however, picom interferes and polybar doesn't appear on top of it
 # xsetroot -bg "#323d43" -fg "#465258" -mod 16 16
-~/.fehbg &
+~/.fehbg & 
+
+# ==================== start these if not already running ==================== 
+
+pgrep -x sxhkd > /dev/null || sxhkd &
 
 pgrep -x polybar > /dev/null || polybar heusc > /dev/null 2>&1 &
 
 # redshift -P -O 4538
 
-pgrep -x picom > /dev/null || picom --experimental-backends --config /home/devpogi/.config/picom/picom.conf &
+pgrep -x picom > /dev/null || picom --experimental-backends --config $HOME/.config/picom/picom.conf &
 
 #pgrep -x dunst > /dev/null || dunst &
 #sleep 1;
 #notify-send "Welcome" "$USER" -u low
 
-## will be handled by cron job later
+#will be handled by cron job later
 #notify-send "don't forget to run battery_health.sh" -u normal
 
