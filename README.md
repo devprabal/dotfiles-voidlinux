@@ -269,6 +269,8 @@ Some good themes (gtk2/3) (with ongoing development) (in order of liking) -
 - [Obsidian 2](https://www.gnome-look.org/p/1173113/)
 - [Jade 1](https://www.gnome-look.org/p/1167214)
 - [Prof Gnome theme](https://www.gnome-look.org/p/1334194/)
+- [Nextwaita](https://www.gnome-look.org/p/1289376/)
+- [Desert](https://www.gnome-look.org/p/1449286/)
 
 Notes:
 
