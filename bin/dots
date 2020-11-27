@@ -1,5 +1,6 @@
 $HOME/.config/alacritty/alacritty.yml
 $HOME/.config/bspwm/bspwmrc
+$HOME/.config/bspwm/ext_rules
 $HOME/.config/fontconfig/fonts.conf
 $HOME/.config/pcmanfm/default/pcmanfm.conf
 $HOME/.config/picom/picom.conf

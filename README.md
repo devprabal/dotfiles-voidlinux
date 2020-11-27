@@ -368,4 +368,6 @@ alias ls='ls --color=auto'
 
 [source arch wiki](https://wiki.archlinux.org/index.php/Color_output_in_console)
 
--  
+- `xtitle` should be installed for solving the floating image previews problem in telegram on bspwm. Or you will have to adapt something similar to `xtitle` with `xprop` (which must be already installed).
+
+

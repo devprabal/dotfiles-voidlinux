@@ -1,0 +1,2 @@
+#!/bin/bash
+[[ $(xtitle $1) = "Media viewer" ]] && echo state=floating
