@@ -180,8 +180,9 @@ After installing *Noto* fonts from void repos, check if it displays it correctly
 These are the fonts that I have additionally installed (these don't include any fonts that might have been downloaded as a dependency for another application) - 
 
 - **Monospace:** `Hack Nerd Font` and `FiraCode Nerd Font` from [nerdfonts.com/](nerdfonts.com/) and placed under `~/.local/share/fonts`
-- **Sans-serif:** `Roboto` and **Serif:** `Merriweather` from [google fonts](fonts.google.com) and placed under `~/.local/share/fonts`
+- **Sans-serif:** `Roboto` and **Serif:** `Merriweather` from [google fonts](fonts.google.com) and placed under `~/.local/share/fonts`. (I found that google fonts and roboto are also available in void repos).
 - **Serif, Sans-serif, monospace:** `noto-fonts-cjk noto-fonts-emoji noto-fonts-ttf noto-fonts-ttf-extra` from void repos. (You can search for them on [void list of packages page](https://voidlinux.org/packages/))
+- **Serif, Sans-serif, monospace:** `liberation-fonts-ttf` from void repos.
 
 **Note:** You can disable the `~/.config/fontconfig/fonts.conf` (by renaming it) (check `fc-conflist` after renaming to be sure) after installing *Noto* fonts from the void repos. All fonts will still be rendered properly. However, in order to set a peference for which fonts to use, you can enable `fonts.conf`.
 
@@ -312,7 +313,25 @@ Installed `pcmanfm` from void repos and set its preferences (like which terminal
 
 Also installed `pcmanfm-qt` from void repos (though I will uninstall it).
 
-### Miscellaneous
+### Neovim
+
+I am moving away from vim and switching to `nvim` because -
+
+- vim by default, doesn't have support for x11 clipboard (need to install and use `vim-x11` instead of `vim` to fix it).
+[read this wiki](https://vim.fandom.com/wiki/Accessing_the_system_clipboard)
+
+[Also watch this video by Luke Smith to understand vim's registers and system registers for copy-pasting](https://www.youtube.com/watch?v=E_rbfQqrm7g&feature=youtu.be)
+
+- vim does some very bad indentation shit when pasting a text from another application into it. A part of the solution was that I used default vim settings (by removing `.vimrc` file) but that still strips-off some of the starting characters from the pasted text. [this stackexchange answer is fine, but too much work to do a simple paste](https://unix.stackexchange.com/questions/199203/why-does-vim-indent-pasted-code-incorrectly). (Also, it too didn't solve the stripping of starting characters.
+
+- `nvim` has some good features by default, like it can access the system clipboard (Ctrl-Shift-c to copy from nvim to system clipboard and paste by Ctrl-v in another application) (Ctrl-Shift-v to paste in nvim from another application where we copied into the system clipboard by Ctrl-c).
+
+- `nvim` doesn't do the indentation shit and doesn't strip-off start characters from the pasted text. It also has beam cursor for insert mode and block cursor for normal mode (nice!).
+
+I will be exploring more of neovim's features.
+
+
+## Miscellaneous
 
 - Use `pkill` instead of `killall` (not present by default in void).
 
@@ -370,4 +389,10 @@ alias ls='ls --color=auto'
 
 - `xtitle` should be installed for solving the floating image previews problem in telegram on bspwm. Or you will have to adapt something similar to `xtitle` with `xprop` (which must be already installed).
 
+- Quick scratchpad in firefox - 
 
+```html
+data:text/html, <style>html,body{margin: 0; padding: 0;}</style><textarea style="font-size: 1.1em; font-family: 'FiraCode Nerd Font', monospace; line-height: 1.2em; background: rgb(40,44,52); color: rgb(220,223,228); width: 100%; height: 100%; border: none; outline: none; margin: 0; padding: 90px;" autofocus placeholder="write..." />
+```
+
+- 
