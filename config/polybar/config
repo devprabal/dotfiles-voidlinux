@@ -90,6 +90,7 @@ label-urgent-background = ${colorsdark.fg}
 [module/xwindow]
 type = internal/xwindow
 label = %title%
+label-empty = Void Linux
 label-maxlen = 50
 format-foreground = ${colorsdark.fg}
 format-background = ${colorsdark.bg}
