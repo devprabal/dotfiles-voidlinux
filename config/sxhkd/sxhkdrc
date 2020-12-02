@@ -107,9 +107,9 @@ super + shift + {l, Right}
 alt + {_,shift + }Tab
 	bspc node -f {next,prev}.local.!hidden.window
 
-# cycle desktops on current monitor
+# cycle occupied desktops on current monitor
 alt + {_,shift + }grave
-	bspc desktop -f {next, prev}.local
+	bspc desktop -f {next, prev}.occupied
 
 # focus the last node/desktop
 super + {Tab,grave}
