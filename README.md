@@ -395,4 +395,8 @@ alias ls='ls --color=auto'
 data:text/html, <style>html,body{margin: 0; padding: 0;}</style><textarea style="font-size: 1.1em; font-family: 'FiraCode Nerd Font', monospace; line-height: 1.2em; background: rgb(40,44,52); color: rgb(220,223,228); width: 100%; height: 100%; border: none; outline: none; margin: 0; padding: 90px;" autofocus placeholder="write..." />
 ```
 
+- Using `audacious` for a GUI music player. Need to install both `audacious` and `audacious-plugins`.
+
+- Using `mpv` for video player. 
+
 - 
