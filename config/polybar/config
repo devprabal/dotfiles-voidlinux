@@ -157,7 +157,7 @@ label-charging = "%{T2}%percentage%%  %{T-}"
 label-charging-foreground = ${colorsdark.fg}
 label-discharging = "%{T2}%percentage%%  %{T-}"
 label-discharging-foreground = ${colorsdark.fg}
-label-full = "%{T2}%percentage%%  and%{T-}"
+label-full = "%{T2}%percentage%%  %{T-}"
 
 animation-charging-0 = %{T4}%{F#e5c07b} ⚡%{T-}%{F-}
 animation-charging-1 = %{T4}%{F#98c379} ⚡%{T-}%{F-}
