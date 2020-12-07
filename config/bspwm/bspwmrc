@@ -26,6 +26,8 @@ bspc rule -a TelegramDesktop desktop='^8'
 bspc rule -a "Code - OSS" desktop='^3' state=tiled
 bspc rule -a "Master PDF Editor 5" desktop='^4' state=tiled
 bspc rule -a feh state=floating
+bspc rule -a mpv state=floating
+bspc rule -a Audacious state=floating
  
 # ==================== cursor and wallpaper  ==================== 
  
