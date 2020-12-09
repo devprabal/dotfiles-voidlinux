@@ -418,4 +418,8 @@ EndSection
 ```
 [arch wiki](https://bbs.archlinux.org/viewtopic.php?id=232862). Also see man pages for `xorg.conf`, `xorg.conf.d`, `libinput`.
 
-- 
+- **Other programs installed** : 
+
+	- [`bat`](https://github.com/sharkdp/bat) (modern cat clone, available in void repos)
+	- 
+
