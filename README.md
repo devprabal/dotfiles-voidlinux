@@ -397,6 +397,25 @@ data:text/html, <style>html,body{margin: 0; padding: 0;}</style><textarea style=
 
 - Using `audacious` for a GUI music player. Need to install both `audacious` and `audacious-plugins`.
 
-- Using `mpv` for video player. 
+- Using `mpv` for video player. Additionally, installed `youtube-dl` from void repos for watching `URL` (see `man mpv`) videos in `mpv`. 
+
+- For touchpad "tap to click" and "Natural Scrolling", make a dir `xorg.conf.d` in `/etc/X11` and inside it, make a file named `40-libinput.conf` with the following contents - 
+
+```text
+Section "InputClass"
+    Identifier "Touchpad"
+    MatchIsTouchpad "on"
+    Driver "libinput"
+    Option "Tapping" "on"
+EndSection
+
+Section "InputClass"
+    Identifier "Touchpad"
+    MatchIsTouchpad "on"
+    Driver "libinput"
+    Option "NaturalScrolling" "on"
+EndSection
+```
+[arch wiki](https://bbs.archlinux.org/viewtopic.php?id=232862). Also see man pages for `xorg.conf`, `xorg.conf.d`, `libinput`.
 
 - 
