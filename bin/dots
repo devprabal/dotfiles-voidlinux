@@ -16,4 +16,4 @@ $HOME/.fehbg
 $HOME/.vimrc
 $HOME/.xinitrc
 $HOME/wallpaper
-
+/etc/X11/xorg.conf.d/40-libinput.conf

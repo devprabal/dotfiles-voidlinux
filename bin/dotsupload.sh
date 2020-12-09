@@ -1,38 +1,35 @@
 #!/bin/bash
 
+access_location="/home/devpogi/dotfiles/bin"
 cwd=$(pwd)
-cwd_allowed='/home/devpogi/dotfiles/bin' 
 
-if [[ "$cwd" != ${cwd_allowed} ]]; then
-	echo Run this script from ${cwd_allowed} dir only. # to safeguard against relative paths 
+if [[ $cwd != $access_location ]]; then
+	echo Run this script from ${access_location} only.
 	exit 1
 fi
 
+sed -i 's/$HOME/\/home\/devpogi/g' dots
+
 for file in $(cat dots)
 do
-	dotdir=${file#\$HOME\/\.}
-	dotdir=${dotdir%\/*}
-
-	## idk why $HOME prefix in file is not getting expanded
-	file=${file#\$HOME\/}
-	file="$HOME/${file}"
-
-	if [[ ${dotdir} =~ .*'/'.* ]]; then
-		mkdir -p ../${dotdir}
-		echo Copying ${file} to ../${dotdir}/
-		if [[ -f ${file} ]]; then
-			cp --no-dereference ${file} ../${dotdir}/
-		else
-			echo "$(tput rev) ${file} does not exist $(tput sgr0)"
+	bak_file=${file#\/home\/devpogi\/}
+	bak_file=${bak_file#\.}
+	bak_file=${bak_file#\/}
+	
+	if [[ -f ${file} ]]; then
+		if [[ $bak_file =~ .*'/'.* ]]; then
+			dotdir=${bak_file%\/*}
+			mkdir -p ../$dotdir
+			echo Copying $file to ../${dotdir}
+                        cp --no-dereference ${file} ../${dotdir}/
+                else
+			echo Copying ${file} to dotfiles
+                        cp --no-dereference ${file} ../
 		fi
 	else
-		echo Copying ${file} to dotfiles 
-		if [[ -f ${file} ]]; then
-			cp --no-dereference ${file} ..
-		else
-			echo "$(tput rev) ${file} does not exist $(tput sgr0)"
-		fi
-
+			
+		echo "$(tput rev) ${file} does not exist $(tput sgr0)"
 	fi
 done
 
+sed -i 's/\/home\/devpogi/$HOME/g' dots
