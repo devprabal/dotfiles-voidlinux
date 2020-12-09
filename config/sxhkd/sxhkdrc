@@ -64,6 +64,7 @@ XF86AudioPlay
 	pgrep -x mpd && mpc toggle && music_notify.sh toggle
 
 # ==================== bspwm ==================== 
+# see bspc man page for details 
 
 # restart bspwm
 super + alt + r
@@ -74,8 +75,12 @@ super + {_,shift + }q
 	bspc node -{c,k}
 
 # set the window state
-super + {t,shift + t,s,f}
-	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+super + {t,shift + t,s}
+	bspc node -t {tiled,pseudo_tiled,floating}
+
+# toggle fullscreen
+super + {f}
+	bspc node -t ~fullscreen
 
 # focus the node in the given direction
 super + {h, Left}
