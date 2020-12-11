@@ -20,3 +20,7 @@ man() {
     LESS_TERMCAP_us=$'\e[01;32m' \
     command man "$@"
 }
+
+## bat env variable (alternatively, bat supports a config file also)
+export BAT_THEME="OneHalfLight"
+

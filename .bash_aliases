@@ -5,5 +5,4 @@ alias ip='ip -color=auto'
 alias gits='git status'
 alias gitlog='git log --all --decorate --oneline --graph'
 alias rm='rm -i'
-alias cat='bat'
 
