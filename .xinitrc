@@ -32,6 +32,9 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
+## ============== Usage ============== 
+# startx ~/.xinitrc bspwm
+
 session=${1:-xfce}
 
 case $session in
