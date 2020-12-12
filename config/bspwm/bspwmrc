@@ -47,9 +47,9 @@ pgrep -x polybar > /dev/null || polybar heusc > /dev/null 2>&1 &
  
 pgrep -x picom > /dev/null || picom --experimental-backends --config $HOME/.config/picom/picom.conf &
  
-#pgrep -x dunst > /dev/null || dunst &
-#sleep 1;
-#notify-send "Welcome" "$USER" -u low
+pgrep -x dunst > /dev/null || dunst &
+sleep 1;
+notify-send "Welcome" "$USER" -u low
  
 #will be handled by cron job later
 #notify-send "don't forget to run battery_health.sh" -u normal

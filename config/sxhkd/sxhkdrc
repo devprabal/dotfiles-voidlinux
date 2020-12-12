@@ -34,24 +34,24 @@ shift + Print
 ## you will need to press Esc to break the chain after you are done
 Alt_R: @KP_Down
 	brightnessctl set 5%-;\
-	~/raisu/scripts/notify_brightness.sh
+	~/.config/dunst/scripts/notify_brightness.sh
 
 Alt_R: @KP_Up
 	brightnessctl set +5%;\
-	~/raisu/scripts/notify_brightness.sh
+	~/.config/dunst/scripts/notify_brightness.sh
 
 # volume controls
 XF86AudioMute
 	amixer set Master toggle; \
-	~/raisu/scripts/notify_volume.sh
+	~/.config/dunst/scripts/notify_volume.sh
 
 XF86AudioRaiseVolume
 	amixer set Master unmute && amixer set Master 5%+; \
-	~/raisu/scripts/notify_volume.sh
+	~/.config/dunst/scripts/notify_volume.sh
 
 XF86AudioLowerVolume
 	amixer set Master unmute && amixer set Master 5%-; \
-	~/raisu/scripts/notify_volume.sh
+	~/.config/dunst/scripts/notify_volume.sh
 
 # music player controls (with mpd and mpc)
 XF86AudioNext

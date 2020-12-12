@@ -9,6 +9,12 @@ $HOME/.config/polybar/colors.forest-night.ini
 $HOME/.config/polybar/colors.onehalf.ini
 $HOME/.config/polybar/config
 $HOME/.config/sxhkd/sxhkdrc
+$HOME/.config/dunst/dunstrc
+$HOME/.config/dunst/icons/brightness.png
+$HOME/.config/dunst/icons/volumemute.png
+$HOME/.config/dunst/icons/volumeunmute.png
+$HOME/.config/dunst/scripts/notify_volume.sh
+$HOME/.config/dunst/scripts/notify_brightness.sh
 $HOME/.Xresources
 $HOME/.bashrc
 $HOME/.bash_aliases
