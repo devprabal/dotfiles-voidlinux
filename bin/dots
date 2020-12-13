@@ -13,6 +13,9 @@ $HOME/.config/dunst/dunstrc
 $HOME/.config/dunst/icons/brightness.png
 $HOME/.config/dunst/icons/volumemute.png
 $HOME/.config/dunst/icons/volumeunmute.png
+$HOME/.config/dunst/icons/dialog-information.png
+$HOME/.config/dunst/icons/dialog-warning.png
+$HOME/.config/dunst/icons/screenshot.png
 $HOME/.config/dunst/scripts/notify_volume.sh
 $HOME/.config/dunst/scripts/notify_brightness.sh
 $HOME/.Xresources

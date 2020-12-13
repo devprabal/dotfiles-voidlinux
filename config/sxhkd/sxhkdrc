@@ -24,11 +24,11 @@ super + d
 # screenshot
 Print
 	maim ~/Pictures/Screenshots/maimshot_$(date +%Y-%m-%d-%H_%M_%S).png; \
-	notify-send "MaimShot" "Saved in ~/Pictures/Screenshots/" -u normal
+	notify-send "MaimShot" "Saved in ~/Pictures/Screenshots/" -u normal --icon="~/.config/dunst/icons/screenshot.png"
 
 shift + Print
 	maim -s ~/Pictures/Screenshots/maimshot_$(date +%Y-%m-%d-%H_%M_%S).png; \
-	notify-send "MaimShot" "Saved in ~/Pictures/Screenshots/" -u normal
+	notify-send "MaimShot" "Saved in ~/Pictures/Screenshots/" -u normal --icon="~/.config/dunst/icons/screenshot.png"
 	
 # brightness controls
 ## you will need to press Esc to break the chain after you are done

@@ -7,7 +7,7 @@
 [global]
     monitor = 0
     follow = none
-    geometry = "600x7-20-60"
+    geometry = "600x7-22+80"
 
     indicate_hidden = true
     shrink = false
@@ -17,7 +17,7 @@
     padding = 8
     horizontal_padding = 8
     frame_width = 3
-    frame_color = "#282828"
+    frame_color = "#282c34"
     separator_color = foreground
     sort = false
     idle_threshold = 0
@@ -25,7 +25,7 @@
     font = "Hack Nerd Font", "Roboto"
     line_height = 0
     markup = full
-    format = "<b>%s</b>\n%b\n<i>%a</i>"
+    format = "<span size="large">%s</span>\n%b\n<i>%a</i>"
     alignment = left
     vertical_alignment = center
     show_age_threshold = -1
@@ -39,6 +39,7 @@
 
     icon_position = left
     max_icon_size = 128
+    icon_path = "/home/devpogi/.config/dunst/icons/:/usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/"
 
     sticky_history = true
     history_length = 40
@@ -65,27 +66,24 @@
 
  [low]
  	msg_urgency = low
- 	background = "#d5c4a1"
- 	foreground = "#3c3836"
+ 	background = "#2c2f33"
+ 	foreground = "#dcdfe4"
  	timeout = 3
- 	new_icon = ""
- 	format = "<span size="xx-large">  </span>\n<span size="large">%s</span>\n<span size="medium">%b</span>\n\n<span size="small"><i>%a</i></span>"
+ 	format = "<span size="large">%s</span>\n<span size="medium">%b</span>\n\n<span size="small"><i>%a</i></span>"
  
  [normal]
  	msg_urgency = normal
- 	background = "#d5c4a1"
- 	foreground = "#3c3836"
- 	new_icon = ""
-	timeout = 3
- 	format = "<span size="xx-large"> </span>\n<span size="large">%s</span>\n<span size="medium">%b</span>\n\n<span size="small"><i>%a</i></span>"
+ 	background = "#2c2f33"
+ 	foreground = "#dcdfe4"
+ 	timeout = 3
+ 	format = "<span size="large">%s</span>\n<span size="medium">%b</span>\n\n<span size="small"><i>%a</i></span>"
  
  [urgent]
  	msg_urgency = critical
- 	background = "#d5c4a1"
- 	foreground = "#3c3836"
- 	new_icon = ""
+ 	background = "#2c2f33"
+ 	foreground = "#dcdfe4"
  	timeout = 10
- 	format = "<span size="xx-large"> </span>\n<span size="large">%s</span>\n<span size="medium">%b</span>\n\n<span size="small"><i>%a</i></span>"
+ 	format = "<span size="large">%s</span>\n<span size="medium">%b</span>\n\n<span size="small"><i>%a</i></span>"
 
 [welcome]
     	summary = Welcome
@@ -105,8 +103,8 @@
 	appname = notify-send
 	summary = MaimShot
 	msg_urgency = normal
-	timeout = "5ms"
-	format = "<span size="xx-large"> </span>\n<b>%s</b>\n\n%b"
+	timeout = "1500ms"
+	format = "%s\n\n%b"
 
 [brightness_controls]
 	appname = notify-send
