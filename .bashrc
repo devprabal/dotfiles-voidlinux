@@ -24,3 +24,5 @@ man() {
 ## bat env variable (alternatively, bat supports a config file also)
 export BAT_THEME="OneHalfLight"
 
+## my scripts
+export PATH="$HOME/bin:$PATH"
