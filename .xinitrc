@@ -35,7 +35,7 @@ fi
 ## ============== Usage ============== 
 # startx ~/.xinitrc bspwm
 
-session=${1:-xfce}
+session=${1:-bspwm}
 
 case $session in
     bspwm) 
