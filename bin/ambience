@@ -1,0 +1,27 @@
+#!/bin/bash
+
+usage() {
+	echo "Usage: $0 [light|dark]"
+	echo "Toggle light and dark colorschemes for alacritty and vim"
+}
+
+if [[ -z "$1" ]]; then
+	usage
+	exit 1
+fi
+
+ambience="$1"
+
+if [[ "${ambience}" != light && "${ambience}" != dark ]];then
+	usage
+	exit 1
+fi
+
+colorscheme=onehalf"${ambience}"
+terminal_config="$HOME/.config/alacritty/alacritty.yml" 
+vim_config="$HOME/.vimrc"
+
+##TODO: for polybar and nvim
+
+sed -in "s/^colors: .*$/colors: \*${colorscheme}/" "${terminal_config}"
+sed -in "s/^colorscheme .*$/colorscheme ${colorscheme}/" "${vim_config}"

@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# ==================== feoh ==================== 
+# to display scaled-down images using feh for my 1920x1080 screen
+
+if [[ $# -ne 1 ]]; then
+	echo "Usage: `basename $0` FILE" 
+	echo "	supply exactly one image file"
+	exit 1
+fi
+
+feh_installed=$(which feh)
+identify_installed=$(which identify)
+
+if [[ -z "$feh_installed" ]]; then
+	echo "needs feh to be installed"
+	exit 1
+fi
+if [[ -z "$identify_installed" ]]; then
+	echo "needs imagemagick to be installed"
+	exit 1
+fi
+
+dimension_w=$(identify -format "%w" "$1")
+dimension_h=$(identify -format "%h" "$1")
+
+if [[ "$dimension_w" -ge 1920 || "$dimension_h" -ge 1080  ]]; then
+	dimension_w=$(($dimension_w/2))
+	dimension_h=$(($dimension_h/2))
+fi
+feh -x -g "${dimension_w}x${dimension_h}" --auto-zoom --scale-down "$1"
+
+
+

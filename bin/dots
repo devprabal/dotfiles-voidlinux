@@ -18,6 +18,10 @@ $HOME/.config/dunst/icons/dialog-warning.png
 $HOME/.config/dunst/icons/screenshot.png
 $HOME/.config/dunst/scripts/notify_volume.sh
 $HOME/.config/dunst/scripts/notify_brightness.sh
+$HOME/bin/ambience
+$HOME/bin/feoh
+$HOME/bin/fetch
+$HOME/bin/feh_command_for_svg
 $HOME/.Xresources
 $HOME/.bashrc
 $HOME/.bash_aliases

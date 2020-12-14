@@ -1,0 +1,62 @@
+#!/bin/bash
+
+os_name=$(cat /etc/os-release | grep "ID" | head -n 1 |  cut -d'"' -f2)
+version_no=$(cat /etc/os-release | grep "VERSION_ID" | head -n 1)
+os_name_ver="${os_name} ${version_no:12:-1}"
+
+kern=$(uname -r)
+
+shell_prefixed="$SHELL"
+shell_name=${shell_prefixed#/usr/bin/}
+
+script_ppid=$(ps -p $PPID -o ppid --no-headers)
+term=$(ps -p $script_ppid -o comm --no-headers)
+
+#wm_icon=""
+wm_icon="﬿"
+wm="$XDG_CURRENT_DESKTOP"
+if [[ -z "$wm" ]];then
+	wm="$DESKTOP_SESSION"
+fi
+if [[ -z "$wm" ]]; then
+	wm=$(xprop -id $(xprop -root _NET_SUPPORTING_WM_CHECK | cut -d' ' -f5) _NET_WM_NAME | cut -d'"' -f2)
+fi
+
+mem_size=$(free -h --mega | head -n 2| tail -n 1)
+echo $mem_size > /tmp/memm
+mem_used=$(cut -d " " -f 3 /tmp/memm)
+mem_tot=$(cut -d " " -f 2 /tmp/memm)
+mem_use_tot="${mem_used}/${mem_tot}"
+
+cpu_info=$(lscpu | grep "Model name")
+cpu_name=$(echo ${cpu_info:11} | xargs)
+
+host_mach=$(cat /sys/devices/virtual/dmi/id/product_name)
+
+user_host="$(tput setaf 6)$(tput bold)$(whoami)$(tput setaf 3) $(tput setaf 6)\
+$(hostname)$(tput sgr0)"
+
+print_info() {
+	for j in {1..8}
+		do
+			echo -ne "\e[0;3$1m \e[0m"
+		done
+	echo -e "  $(tput setaf 3)$2  $(tput sgr0)$3"
+
+}
+
+echo $user_host
+
+print_info 0  "$os_name_ver"
+print_info 1  "$kern"
+print_info 2  "$shell_name"
+print_info 3  "$term"
+print_info 4 "$wm_icon" "$wm"
+print_info 5  "$mem_use_tot"
+print_info 6  "$cpu_name"
+print_info 7  "$host_mach"
+
+# ==================== with all help from ==================== 
+# [gk's fet.sh](https://github.com/6gk/fet.sh)
+# [dylanaraps's neofetch](https://github.com/dylanaraps/neofetch)
+# [WM, askubuntu](https://askubuntu.com/a/1153698/868341)
