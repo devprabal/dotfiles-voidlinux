@@ -49,4 +49,11 @@ case $session in
     jwm) 
 	    exec /usr/bin/jwm
 	    ;;
+    gnome)
+	    exec /usr/bin/gnome-session
+	    ;;
+    kde)
+	    export DESKTOP_SESSION=plasma
+	    exec /usr/bin/startplasma-x11
+	    ;;
 esac
