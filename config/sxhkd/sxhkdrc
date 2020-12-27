@@ -17,6 +17,10 @@ ctrl + alt + t
 ctrl + alt + f
 	pcmanfm
 
+# dunst history
+ctrl + alt + h
+	dunstctl history-pop
+
 # program launcher
 super + d
 	rofi -modi "drun" -show "drun" -display-drun " " -theme "~/.config/rofi/themes/application_launcher.rasi"
