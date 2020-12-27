@@ -330,6 +330,7 @@ I am moving away from vim and switching to `nvim` because -
 
 I will be exploring more of neovim's features.
 
+- Trick to comment a block of code. `Ctrl+v`, then select, then `Shift+i`, then `#`. [stackoverflow](https://stackoverflow.com/questions/1676632/whats-a-quick-way-to-comment-uncomment-lines-in-vim)
 
 ## Miscellaneous
 
